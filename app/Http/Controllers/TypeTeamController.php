@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\typeTeam;
+use App\Http\Models\TypeTeam;
 use Illuminate\Http\Request;
 
 class TypeTeamController extends Controller
@@ -14,7 +14,10 @@ class TypeTeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams=TypeTeam::all();
+        return view('admin.type_brand.index',[
+            'teams' => $teams,
+        ]);
     }
 
     /**
@@ -35,7 +38,11 @@ class TypeTeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     $team = new TypeTeam();
+     $team->name=$request->name;
+     $team->save();
+
+     return back();
     }
 
     /**
@@ -67,19 +74,27 @@ class TypeTeamController extends Controller
      * @param  \App\typeTeam  $type_team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, typeTeam $type_team)
+    public function update(Request $request,$type_team)
     {
-        //
+
+
+        $type_team = TypeTeam::find($type_team);
+        $type_team->name=$request->name;
+        $type_team->save();
+
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\typeTeam  $type_team
+     * @param  \App\Http\Models\typeTeam  $type_team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(typeTeam $type_team)
+    public function destroy($type_team)
     {
-        //
+        $type_team = TypeTeam::find($type_team);
+        $type_team->delete();
+        return back();
     }
 }
