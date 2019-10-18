@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\product;
+use App\Http\Controllers\Controller;
+use App\Http\Models\client;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(client $client)
     {
         //
     }
@@ -52,10 +53,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit(client $client)
     {
         //
     }
@@ -64,10 +65,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product  $product
+     * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, client $client)
     {
         //
     }
@@ -75,10 +76,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product  $product
+     * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy(client $client)
     {
         //
     }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\repairs;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RepairsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RepairsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\repairs  $repairs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(repairs $repairs)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class RepairsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\repairs  $repairs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(repairs $repairs)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class RepairsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\repairs  $repairs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, repairs $repairs)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class RepairsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\repairs  $repairs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(repairs $repairs)
+    public function destroy($id)
     {
         //
     }

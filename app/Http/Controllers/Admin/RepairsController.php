@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\client;
+use App\Http\Controllers\Controller;
+use App\Http\Models\repairs;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class RepairsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\client  $client
+     * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function show(client $client)
+    public function show(repairs $repairs)
     {
         //
     }
@@ -52,10 +53,10 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\client  $client
+     * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function edit(client $client)
+    public function edit(repairs $repairs)
     {
         //
     }
@@ -64,10 +65,10 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\client  $client
+     * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, client $client)
+    public function update(Request $request, repairs $repairs)
     {
         //
     }
@@ -75,10 +76,10 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\client  $client
+     * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(client $client)
+    public function destroy(repairs $repairs)
     {
         //
     }

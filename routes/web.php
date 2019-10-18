@@ -12,20 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/client');
 });
 
-Auth::routes();
+Route::post('login',
+    'Auth\LoginController@login');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('login',
+    'Auth\LoginController@showLoginForm')
+    ->name('login');
 
-Route::resource('/admin/typeTeam','TypeTeamController');
-Route::resource('/admin/brand','BrandController');
-Route::resource('/admin/client','ClientController');
-Route::resource('/admin/product','ProductController');
-Route::resource('/admin/repair','RepairsController');
-Route::resource('/admin/update','UpdateController');
-Route::resource('/admin/work','WorkController');
-Route::resource('/admin/user','UsersController');
-
-Route::view('/admin','admin.type_brand.index');

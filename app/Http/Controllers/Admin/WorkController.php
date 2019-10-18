@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\work;
+use App\Http\Controllers\Controller;
+use App\Http\Models\work;
 use Illuminate\Http\Request;
 
 class WorkController extends Controller
@@ -14,7 +15,10 @@ class WorkController extends Controller
      */
     public function index()
     {
-        //
+        $work = work::all();
+        return view('admin.work.index',[
+            'works' => $work
+        ]);
     }
 
     /**
