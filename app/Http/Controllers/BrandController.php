@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\brand;
 use Illuminate\Http\Request;
+use App\Http\Models\Brand;
 
 class BrandController extends Controller
 {
@@ -14,7 +14,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands=Brand::all();
+        return view('admin.type_brand.index',[
+            'brands' => $brands,
+        ]);
     }
 
     /**
