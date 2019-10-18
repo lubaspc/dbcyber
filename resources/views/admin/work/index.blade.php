@@ -1,40 +1,43 @@
-@extends('templet.templete_admin)
+@extends('templet.templet')
 @section('title','Trabajos')
-@section('content')
-    <div class="container">
+
+@section('body')
+    @include('components.narvar')
+    <div class="container pt-5">
+        <div class="row">
+            <div class="w-100 align-items-end items-end mb-3" >
+                <a class="btn btn-primary" href="{{route('work.create')}}">Ingresar</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
-                <table class="table table-dark">
+                <table class="table table-sm table-responsive-sm table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Folio</th>
+                        <th scope="col">Recibido</th>
+                        <th scope="col">Programado</th>
+                        <th scope="col">Atendido por</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Entregado</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($works as $work)
                     <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    @endsection
+@endsection

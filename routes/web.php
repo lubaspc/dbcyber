@@ -15,6 +15,8 @@ Route::get('/', function () {
     return redirect('/client');
 });
 
+//Route::auth();
+
 Route::post('login',
     'Auth\LoginController@login');
 
