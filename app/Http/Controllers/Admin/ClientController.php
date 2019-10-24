@@ -15,7 +15,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $client = client::all();
+        return view('admin.client.index',[
+            'clients' => $client
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.client.create');
     }
 
     /**
@@ -36,7 +39,12 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new client();
+        $client->name = $request->get('name');
+        $client->direction = $request->get('direction');
+        $client->phone = $request->get('phone');
+        $client->save();
+        return redirect(route('client.index'));
     }
 
     /**
@@ -45,10 +53,7 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(client $client)
-    {
-        //
-    }
+    public function show(client $client){}
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +61,12 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(client $client)
+    public function edit($clientId)
     {
-        //
+        $client = client::find($clientId);
+        return view('admin.client.update',[
+            'client' => $client
+        ]);
     }
 
     /**
@@ -68,9 +76,14 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, client $client)
+    public function update(Request $request, $clientId)
     {
-        //
+        $client = client::find($clientId);
+        $client->name = $request->get('name');
+        $client->direction = $request->get('direction');
+        $client->phone = $request->get('phone');
+        $client->save();
+        return redirect(route('client.index'));
     }
 
     /**
@@ -79,8 +92,13 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(client $client)
+    public function destroy($clientId){}
+
+    public function active($clientId)
     {
-        //
+        $client = client::find($clientId);
+        $client->active=!$client->active;
+        $client->save();
+        return redirect(route('client.index'));
     }
 }

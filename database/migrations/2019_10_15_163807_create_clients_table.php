@@ -17,7 +17,8 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('direction')->nullable();
-            $table->unsignedInteger('phone')->nullable();
+            $table->unsignedBigInteger('phone')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

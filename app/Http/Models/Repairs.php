@@ -23,8 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\repairs whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\repairs whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $active
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\repairs whereActive($value)
  */
 class repairs extends Model
 {
-    //
+    protected $table="repairs";
+
+    public static function asMap(){
+        return self::pluck('description','id');
+    }
 }

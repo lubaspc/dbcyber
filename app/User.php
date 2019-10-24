@@ -33,6 +33,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereTypeUsr($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $active
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereActive($value)
  */
 class User extends Authenticatable
 {

@@ -10644,6 +10644,13 @@ a.text-dark:focus {
   }
 }
 
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 .bgimg-1 {
   position: relative;
   background-attachment: fixed;
@@ -10652,5 +10659,10 @@ a.text-dark:focus {
   background-size: cover;
   background-image: url("/img/cyber.jpg");
   min-height: 100%;
+}
+
+.items-end {
+  display: -webkit-box !important;
+  -webkit-box-pack: end !important;
 }
 

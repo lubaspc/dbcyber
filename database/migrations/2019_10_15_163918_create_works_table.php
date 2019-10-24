@@ -16,14 +16,14 @@ class CreateWorksTable extends Migration
 
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('date_reception');
             $table->dateTime('date_estimated')->nullable();
             $table->unsignedInteger('status')->default(1);
-            $table->dateTime('date_delivery');
-            $table->unsignedDecimal('cost_total');
+            $table->dateTime('date_delivery')->nullable();
+            $table->unsignedDecimal('cost_total')->nullable();
             $table->unsignedBigInteger('fk_id_client');
             $table->unsignedBigInteger('fk_id_user');
             $table->unsignedBigInteger('fk_id_product');
+            $table->boolean('active')->default(1);
             $table->foreign('fk_id_client')->on('clients')->references('id');
             $table->foreign('fk_id_user')->on('users')->references('id');
             $table->foreign('fk_id_product')->on('products')->references('id');

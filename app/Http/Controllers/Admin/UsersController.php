@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,7 +15,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('admin.user.index',[
+            'users' => $user
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -35,7 +39,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->type_usr = $request->get('type_usr');
+        $user->password = encrypt($request->get('pass'));
+        $user->save();
+        return redirect(route('user.index'));
     }
 
     /**
@@ -57,7 +67,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.user.update',[
+            'user' =>$user
+        ]);
     }
 
     /**
@@ -69,7 +82,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->type_usr = $request->get('type_usr');
+        $user->password = encrypt($request->get('pass'));
+        $user->save();
+        return redirect(route('user.index'));
     }
 
     /**
@@ -80,6 +99,14 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+    public function active($userId)
+    {
+        $user = User::find($userId);
+        $user->active=!$user->active;
+        $user->save();
+        return redirect(route('user.index'));
     }
 }

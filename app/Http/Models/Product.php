@@ -21,8 +21,27 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Http\Models\brand $brand
+ * @property-read \App\Http\Models\typeTeam $typeTeam
  */
 class product extends Model
 {
-    //
+    protected $table = "products";
+    protected $fillable = ['fk_id_brand', 'fk_id_type_teams'];
+
+    public function brand(){
+        return $this->belongsTo(
+            brand::class,
+            'fk_id_brand',
+            'id'
+        );
+    }
+
+    public function typeTeam(){
+        return $this->belongsTo(
+            typeTeam::class,
+            'fk_id_type_teams',
+            'id'
+        );
+    }
 }

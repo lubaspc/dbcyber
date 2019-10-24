@@ -23,8 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\client wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\client whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $active
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\client whereActive($value)
  */
 class client extends Model
 {
-    //
+    protected $table = "clients";
+
+    public static function asMap(){
+        return self::pluck('name','id');
+    }
 }

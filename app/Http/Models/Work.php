@@ -2,6 +2,7 @@
 
 namespace App\Http\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -33,8 +34,58 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\work whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\work whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $active
+ * @property-read \App\Http\Models\client $client
+ * @property-read \App\Http\Models\product $product
+ * @property-read \App\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\work whereActive($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Http\Models\repairs[] $repairs
+ * @property-read int|null $repairs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Http\Models\update[] $updats
+ * @property-read int|null $updats_count
  */
 class work extends Model
 {
-    //
+    protected $table = "works";
+
+    public function user(){
+        return $this->belongsTo(
+            User::class,
+            'fk_id_user',
+            'id'
+        );
+    }
+
+    public function client(){
+        return $this->belongsTo(
+            client::class,
+            'fk_id_client',
+            'id'
+        );
+    }
+
+    public function product(){
+        return $this->belongsTo(
+            product::class,
+            'fk_id_product',
+            'id'
+        );
+    }
+
+   public function  updats(){
+        return $this->hasMany(
+            update::class,
+            'fk_id_work',
+            'id'
+        );
+   }
+
+    public function repairs(){
+        return $this->belongsToMany(
+            repairs::class,
+            'updates',
+            'fk_id_work',
+            'fk_id_repair'
+        )->withPivot('budget','description','created_at');
+    }
 }

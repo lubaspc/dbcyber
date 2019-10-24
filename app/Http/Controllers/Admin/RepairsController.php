@@ -15,7 +15,10 @@ class RepairsController extends Controller
      */
     public function index()
     {
-        //
+        $repairs = repairs::all();
+        return view('admin.repairs.index',[
+            'repairs' => $repairs
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class RepairsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.repairs.create');
     }
 
     /**
@@ -36,7 +39,12 @@ class RepairsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $repair = new repairs();
+        $repair->duration = $request->get('duration',null);
+        $repair->cost = $request->get('cost',null);
+        $repair->description = $request->get('description',null);
+        $repair->save();
+        return redirect(route('repair.index'));
     }
 
     /**
@@ -56,9 +64,13 @@ class RepairsController extends Controller
      * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function edit(repairs $repairs)
+    public function edit($repairsId)
     {
-        //
+        $repairs=repairs::find($repairsId);
+
+        return view('admin.repairs.update',[
+            'repair' => $repairs
+        ]);
     }
 
     /**
@@ -68,9 +80,14 @@ class RepairsController extends Controller
      * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, repairs $repairs)
+    public function update(Request $request, $repairsId)
     {
-        //
+        $repairs=repairs::find($repairsId);
+        $repairs->duration = $request->get('duration',null);
+        $repairs->cost = $request->get('cost',null);
+        $repairs->description = $request->get('description',null);
+        $repairs->save();
+        return redirect(route('repair.index'));
     }
 
     /**
@@ -79,8 +96,16 @@ class RepairsController extends Controller
      * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(repairs $repairs)
+    public function destroy($repairsId)
     {
-        //
+
+    }
+
+    public function active($repairId)
+    {
+        $repair = repairs::find($repairId);
+        $repair->active=!$repair->active;
+        $repair->save();
+        return redirect(route('repair.index'));
     }
 }

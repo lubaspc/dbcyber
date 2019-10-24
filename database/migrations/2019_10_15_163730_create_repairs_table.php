@@ -18,6 +18,7 @@ class CreateRepairsTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedDecimal('cost');
             $table->time('duration');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

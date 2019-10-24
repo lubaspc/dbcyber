@@ -13,9 +13,17 @@
 
 Route::get('/', function () {
     return redirect('/client');
-});
+})->name('home');
 
-//Route::auth();
+//      Route::auth();
+
+Route::get('/client',
+    'ClienteController@index'
+)->name('client_index');
+
+Route::post('/client/check',
+    'ClienteController@check'
+)->name('client_check');
 
 Route::post('login',
     'Auth\LoginController@login');
@@ -23,4 +31,8 @@ Route::post('login',
 Route::get('login',
     'Auth\LoginController@showLoginForm')
     ->name('login');
+
+Route::post('logout',
+    'Auth\LoginController@logout')
+    ->name('logout');
 

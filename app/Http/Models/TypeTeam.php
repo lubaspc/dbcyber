@@ -22,5 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class typeTeam extends Model
 {
-    //
+    protected $table = "type_teams";
+    protected $fillable = ['name'];
+
+    public static function asMap(){
+        return self::pluck('name','id');
+    }
 }

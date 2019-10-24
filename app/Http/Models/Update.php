@@ -25,8 +25,26 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\update whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Http\Models\update whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Http\Models\repairs $repair
+ * @property-read \App\Http\Models\work $work
  */
 class update extends Model
 {
-    //
+    protected $table = "updates";
+
+    public function work(){
+        return $this->belongsTo(
+            work::class,
+            'fk_id_work',
+            'id'
+        );
+    }
+
+    public function repair(){
+        return $this->belongsTo(
+            repairs::class,
+            'fk_id_repair',
+            'id'
+        );
+    }
 }
