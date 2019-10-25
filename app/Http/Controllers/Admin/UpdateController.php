@@ -69,7 +69,8 @@ class UpdateController extends Controller
         return view('admin.updates.index',[
             'updates'=> $update,
             'client' =>$client,
-            'status' =>$work->status
+            'status' =>$work->status,
+            'work' => $work->id
         ]);
     }
 

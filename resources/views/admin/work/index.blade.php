@@ -7,7 +7,7 @@
     <div class="container pt-5">
         <div class="row">
             <div class="w-100 align-items-end items-end mb-3" >
-                <a class="btn btn-primary" href="{{route('work.create')}}">Ingresar</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#ModalCreate">Ingresar</a>
             </div>
         </div>
         <div class="row">
@@ -39,17 +39,14 @@
                         <td>{{$work->status}}</td>
                         <td>{{$work->date_delivery}}</td>
                         <td>{{$work->cost_total}}</td>
-                        <td>
+                        <td style="min-width: 30%">
                             <a href="{{route('update.show',['update' => $work->id])}}" class="btn btn-outline-success">Ver Trabajos</a>
                             @if($work->status==1)
-                                <a class="btn btn-outline-warning"
-                               onclick="event.preventDefault();
-                                document.getElementById('update').submit();">
-                            <form id="update" action="{{route('work.update',['work' =>$work])}}" method="post">
-                                @csrf @method('PUT')
-                            </form>Entregar</a>
+                                <a class="btn btn-outline-warning" data-toggle="modal" data-target="#statusModal">Entregado</a>
                             @endif
-                            <a href="{{route('work_active',['work' => $work])}}" class="btn btn-outline-danger">Eliminar</a>
+                            <span> &nbsp;&nbsp;</span>
+                            <a class="" data-toggle="modal" data-target="#deleteModal">
+                                <i class="fas {{$work->active?'fa-toggle-on':'fa-toggle-off'}} fa-2x"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -58,4 +55,45 @@
             </div>
         </div>
     </div>
+    @include( 'components.modal',[
+    'route' => route('work.store'),
+    'title' => 'Trabajo',
+    'include' => 'admin.work.create'
+    ])
+
+
+
+    @include('components.delete',[
+    'title' => 'Cambiar estado de activo o incactivo',
+    'message' => 'Estas seguro de cambiar su estado actual',
+    'route' =>route('work_active',['work' => $work])
+    ])
+
+    <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Trabajo entegado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <i class="fas fa-clipboard-check fa-10x"></i><br>
+                    <h3>Deseas cambiar el status a entregado</h3>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-outline-warning"
+                       onclick="event.preventDefault();
+                                document.getElementById('update').submit();">
+                        <form id="update" action="{{route('work.update',['work' =>$work])}}" method="post">
+                            @csrf @method('PUT')
+                        </form>Entregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

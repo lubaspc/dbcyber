@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Hash;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -43,7 +44,7 @@ class UsersController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->type_usr = $request->get('type_usr');
-        $user->password = encrypt($request->get('pass'));
+        $user->password = Hash::make($request->get('pass'));
         $user->save();
         return redirect(route('user.index'));
     }
@@ -86,7 +87,7 @@ class UsersController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->type_usr = $request->get('type_usr');
-        $user->password = encrypt($request->get('pass'));
+        $user->password = Hash::make($request->get('pass'));
         $user->save();
         return redirect(route('user.index'));
     }

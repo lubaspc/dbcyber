@@ -22,7 +22,7 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $work = work::all();
+        $work = work::orderBy('status')->get();
         return view('admin.work.index',[
             'works' => $work
         ]);
@@ -152,9 +152,9 @@ class WorkController extends Controller
 
     public function active($workId)
     {
-        $work = client::find($workId);
+        $work = work::find($workId);
         $work->active=!$work->active;
         $work->save();
-        return redirect(route('work.index'));
+        return redirect()->back();
     }
 }

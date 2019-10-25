@@ -7,7 +7,7 @@
     <div class="container pt-5">
         <div class="row">
             <div class="w-100 align-items-end items-end mb-3" >
-                <a class="btn btn-primary" href="{{route('user.create')}}">Ingresar</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#ModalCreate">Ingresar</a>
             </div>
         </div>
         <div class="row">
@@ -29,8 +29,10 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td class="justify-content-center">
-                            <a href="{{route('user.edit',['user' => $user])}}" class="btn btn-outline-warning">Modificar</a>
-                            <a href="{{route('user_active',['user' => $user])}}" class="btn btn-outline-danger">Eliminar</a>
+                            <a data-toggle="modal" data-target="#ModalUpdate" class="btn btn-outline-warning">Modificar</a>
+                            <span> &nbsp;&nbsp;</span>
+                            <a class="" data-toggle="modal" data-target="#deleteModal">
+                                <i class="fas {{$user->active?'fa-toggle-on':'fa-toggle-off'}} fa-2x"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -39,4 +41,20 @@
             </div>
         </div>
     </div>
+    @include( 'components.modal',[
+    'route' => route('user.store'),
+    'title' => 'Usuario',
+    'include' => 'admin.user._form'
+    ])
+    @include( 'components.modal',[
+    'update' => 'true',
+    'route' => route('user.update',['user' => $user]),
+    'title' => 'Usuario',
+    'include' => 'admin.user._form'
+    ])
+    @include('components.delete',[
+    'title' => 'Cambiar estado de activo o incactivo',
+    'message' => 'Estas seguro de cambiar su estado actual',
+    'route' =>route('user_active',['user' => $user])
+    ])
 @endsection

@@ -9,7 +9,7 @@
             <div class="w-100 align-items-end items-end mb-3" >
                 <h4 class="col-3 text-dark">Trabajo No. {{$updates[0]->fk_id_work}}</h4>
                 <h4 class="col-3 text-dark">Cliente: {{$client->name}}</h4>
-                @if($status==1)<a class="btn btn-primary" href="{{route('update.create',['fk_id_work' =>$updates[0]->fk_id_work])}}">Ingresar</a>@endif
+                @if($status==1)<a class="btn btn-primary" data-toggle="modal" data-target="#ModalCreate">Ingresar</a>@endif
             </div>
         </div>
         <div class="row">
@@ -24,19 +24,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($updates as $update)
+                    @foreach($updates as $updat)
                     <tr>
-                        <th scope="row">{{$update->id}}</th>
-                        <td>{{$update->description}}</td>
-                        <td>{{$update->budget}}</td>
-                        <td>{{$update->repair->description}}</td>
+                        <th scope="row">{{$updat->id}}</th>
+                        <td>{{$updat->description}}</td>
+                        <td>{{$updat->budget}}</td>
+                        <td>{{$updat->repair->description}}</td>
                         <td class="justify-content-center">
                             @if($status==1)
-                                <a href="{{route('update.edit',['update' => $update])}}"
-                                   class="btn btn-outline-warning">Modificar</a>
+                                <a data-toggle="modal" data-target="#ModalUpdate" class="btn btn-outline-warning">Modificar</a>
                                 <a class="btn btn-outline-danger" onclick="event.preventDefault();
                                 document.getElementById('delete').submit();">
-                                    <form id="delete" action="{{route('update.destroy',['update' =>$update])}}"
+                                    <form id="delete" action="{{route('update.destroy',['update' =>$updat])}}"
                                           method="post">
                                         @csrf @method('DELETE')
                                     </form>
@@ -50,4 +49,18 @@
             </div>
         </div>
     </div>
+    @include( 'components.modal',[
+        'route' => route('update.store'),
+        'title' => 'Actulisacion',
+        'include' => 'admin.updates.create',
+        'work' => $work
+        ])
+
+    @include( 'components.modal',[
+   'update' => 'true',
+   'route' => route('update.update',['update' => $updat]),
+   'title' => 'Actulicaion',
+   'include' => 'admin.updates._form'
+   ])
+
 @endsection
