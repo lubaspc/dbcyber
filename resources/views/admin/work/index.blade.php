@@ -62,7 +62,7 @@
     ])
 
 
-
+    @isset($client)
     @include('components.delete',[
     'title' => 'Cambiar estado de activo o incactivo',
     'message' => 'Estas seguro de cambiar su estado actual',
@@ -95,5 +95,5 @@
             </div>
         </div>
     </div>
-
+    @endisset
 @endsection

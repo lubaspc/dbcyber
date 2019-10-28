@@ -46,6 +46,9 @@
     'title' => 'Cliente',
     'include' => 'admin.client._form'
     ])
+
+    @isset($client)
+
     @include( 'components.modal',[
     'update' => 'true',
     'route' => route('client.update',['client' => $client]),
@@ -57,4 +60,6 @@
     'message' => 'Estas seguro de cambiar su estado actual',
     'route' =>route('client_active',['clientId' => $client])
     ])
+
+    @endisset
 @endsection

@@ -46,6 +46,8 @@
     'title' => 'Usuario',
     'include' => 'admin.user._form'
     ])
+
+    @isset($client)
     @include( 'components.modal',[
     'update' => 'true',
     'route' => route('user.update',['user' => $user]),
@@ -57,4 +59,6 @@
     'message' => 'Estas seguro de cambiar su estado actual',
     'route' =>route('user_active',['user' => $user])
     ])
+
+    @endisset
 @endsection

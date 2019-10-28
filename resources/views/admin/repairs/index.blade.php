@@ -46,6 +46,7 @@
   'title' => 'Reparacion',
   'include' => 'admin.repairs._form'
   ])
+    @isset($repair)
     @include( 'components.modal',[
     'update' => 'true',
     'route' => route('repair.update',['repair' => $repair]),
@@ -57,4 +58,5 @@
     'message' => 'Estas seguro de cambiar su estado actual',
     'route' =>route('repair_active',['repair' => $repair])
     ])
+    @endisset
 @endsection

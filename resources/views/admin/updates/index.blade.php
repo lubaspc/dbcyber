@@ -55,12 +55,13 @@
         'include' => 'admin.updates.create',
         'work' => $work
         ])
-
+    @isset($client)
     @include( 'components.modal',[
    'update' => 'true',
    'route' => route('update.update',['update' => $updat]),
    'title' => 'Actulicaion',
    'include' => 'admin.updates._form'
    ])
+    @endisset
 
 @endsection
