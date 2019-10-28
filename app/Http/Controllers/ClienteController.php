@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Models\product;
 use App\Http\Models\work;
+use App\Http\Requests\CheckRequest;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,7 @@ class ClienteController extends Controller
         return view('client.index');
     }
 
-    public function check(Request $request){
+    public function check(CheckRequest $request){
         $work = work::find($request->get('work',null));
 
         $product = product::where('fk_id_brand',$request->get('brand',null))

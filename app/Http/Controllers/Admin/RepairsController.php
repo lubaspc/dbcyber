@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Models\repairs;
+use App\Http\Requests\FullCampsRequest;
 use Illuminate\Http\Request;
 
 class RepairsController extends Controller
@@ -37,7 +38,7 @@ class RepairsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FullCampsRequest $request)
     {
         $repair = new repairs();
         $repair->duration = $request->get('duration',null);
@@ -80,7 +81,7 @@ class RepairsController extends Controller
      * @param  \App\repairs  $repairs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $repairsId)
+    public function update(FullCampsRequest $request, $repairsId)
     {
         $repairs=repairs::find($repairsId);
         $repairs->duration = $request->get('duration',null);

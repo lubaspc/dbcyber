@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Models\client;
+use App\Http\Requests\FullCampsRequest;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -37,7 +38,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FullCampsRequest $request)
     {
         $client = new client();
         $client->name = $request->get('name');
@@ -76,7 +77,7 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $clientId)
+    public function update(FullCampsRequest $request, $clientId)
     {
         $client = client::find($clientId);
         $client->name = $request->get('name');

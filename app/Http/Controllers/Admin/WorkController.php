@@ -10,6 +10,7 @@ use App\Http\Models\typeTeam;
 use App\Http\Models\update;
 use App\Http\Models\work;
 use App\Http\Models\Client;
+use App\Http\Requests\WorkRequest;
 use DB;
 use Illuminate\Http\Request;
 
@@ -44,7 +45,7 @@ class WorkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    public function store(Request $request)
+    public function store(WorkRequest $request)
     {
        $work = new work();
        $work->date_estimated=$request->get('date_estimated',null);
