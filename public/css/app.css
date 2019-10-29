@@ -10661,6 +10661,10 @@ html {
   min-height: 100%;
 }
 
+.bg-black {
+  background-color: #222121;
+}
+
 .items-end {
   display: -webkit-box !important;
   -webkit-box-pack: end !important;
