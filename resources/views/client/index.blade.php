@@ -2,9 +2,10 @@
 @section('title','Bienvenido')
 
 @section('body')
-    <div class="container-fluid p-0 m-0 h-100 w-100 " style="background: #fdd835">
+    @include('components.navbar_invited')
+    <div class="container-fluid p-0 m-0 h-100 w-100 ">
         <div class="row justify-content-center h-100 align-content-center">
-            <div class="card shadow ">
+            <div class="card shadow card-bg-black color-white">
                 <div class="card-header">
                     Bienvenido Dame tus credenciales para acceder
                 </div>
@@ -32,7 +33,7 @@
                             <label>Folio</label>
                             <input class="form-control" name="work" type="number">
                         </div>
-                        <button type="submit" class="btn btn-success form-control">Enviar</button>
+                        <button type="submit" class="btn btn-primary form-control">Enviar</button>
                     </form>
                 </div>
             </div>

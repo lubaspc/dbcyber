@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="width: 100%; height: 100%">
+<html lang="en" style="width: 100%; height: 100%" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -17,7 +17,7 @@
     @stack('css')
     <title>@yield('title')-Lubins</title>
 </head>
-<body class="p-0 m-0 w-100 h-100 bg-black">
+<body>
     @yield('body')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -30,4 +30,7 @@
     <!--<script src="{{asset('js/app.js')}}"></script>-->
     @stack('js')
 </body>
+<footer class="bg-dark">
+    @yield('footer')
+</footer>
 </html>

@@ -7,8 +7,8 @@
     <div class="container pt-5">
         <div class="row">
             <div class="w-100 align-items-end items-end mb-3" >
-                <h4 class="col-3 text-dark">Trabajo No. {{$updates[0]->fk_id_work}}</h4>
-                <h4 class="col-3 text-dark">Cliente: {{$client->name}}</h4>
+                <h4 class="col-3 text-white">Trabajo No. {{$updates[0]->fk_id_work}}</h4>
+                <h4 class="col-3 text-white">Cliente: {{$client->name}}</h4>
                 @if($status==1)<a class="btn btn-primary" data-toggle="modal" data-target="#ModalCreate">Ingresar</a>@endif
             </div>
         </div>

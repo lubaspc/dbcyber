@@ -10670,3 +10670,58 @@ html {
   -webkit-box-pack: end !important;
 }
 
+.card {
+  background-color: #343a40;
+  color: white;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ffed4a;
+  color: gray !important;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 40px;
+  background-color: #222121;
+}
+
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  min-height: 15vh;
+  color: white;
+}
+
+a {
+  cursor: pointer;
+}
+
+hr.style-eight {
+  overflow: visible;
+  /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double white;
+  color: #333;
+  text-align: center;
+}
+
+hr.style-eight:after {
+  content: "\A7";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  color: white !important;
+}
+

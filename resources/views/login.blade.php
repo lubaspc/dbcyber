@@ -2,10 +2,11 @@
 
 @section('title','Login')
 @section('body')
-    <div class="container  bgimg-1 pt-5" >
+    @include('components.navbar_invited')
+    <div class="container pt-5" >
         <div class="row justify-content-center pt-5 ">
             <div class="col-md-6 ">
-                <div class="card bg-dark text-white">
+                <div class="card text-white">
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">

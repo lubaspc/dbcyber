@@ -14,12 +14,12 @@
 </div>
 
 <div class="form-group">
-    <label>Modelo</label>
+    <label>Marca</label>
     <input type="text" name="brand" class="form-control">
 </div>
 
 <div class="form-group">
-    <label>tipo de equipo</label>
+    <label>Tipo de equipo</label>
     <input type="text" name="typeTeam" class="form-control">
 </div>
 

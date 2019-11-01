@@ -2,17 +2,22 @@
 @section('title','Trabajos')
 
 @section('body')
-    <div class="container pt-5">
-        <div class="row">
-            <div class="alert alert-primary col-12" role="alert">
-               <h1> Bienvenido {{$client->name}} </h1>
-            </div>
-        </div>
-        <div class="row">
+    @include('components.navbar_invited')
+    <div class="row justify-content-center text-white text-center mt-4" >
 
-            <div class="w-100 align-items-end items-end mb-3" >
-                <h4 class="col-3 text-dark">Fecha estimada. {{$work->date_estimated}}</h4>
-                <h4 class="col-3 text-dark">Recibio: {{$work->user->name}}</h4>
+        <h2>
+            <i class="fas fa-user m-4"></i>
+            Bienvenido
+            <strong>{{$client->name}}</strong>
+        </h2>
+    </div>
+
+    <div class="container pt-5">
+
+        <div class="row justify-content-end">
+            <div class="w-100 align-items-end items-end " >
+                <p class="text-white">Fecha estimada. {{$work->date_estimated}}</p>
+                <p class="text-white ml-5">Recibio: {{$work->user->name}}</p>
             </div>
         </div>
         <div class="row">
@@ -36,7 +41,7 @@
                     @php($total+=$update->budget)
                     @endforeach
                     </tbody>
-                    <tr class="bg-primary">
+                    <tr style="background-color: #FF9104">
                         <td></td>
                         <td><h5>Total</h5></td>
                         <td><h5>${{$total}}</h5></td>
@@ -46,13 +51,8 @@
         </div>
 
     </div>
+@endsection
 
-        <div class="row w-100 h-50 justify-content-end align-content-end">
-            <div class="col-12 bg-dark text-white">
-           <h3> Cyber Lubins</br>
-                Telefono 7225530820
-           </h3>
-            </div>
-        </div>
-
+@section('footer')
+    @include('components.footer')
 @endsection
