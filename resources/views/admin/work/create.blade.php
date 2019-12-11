@@ -27,7 +27,7 @@
 <div class="form-group">
     <label>Reparacion</label>
     <select name="fk_id_repair" class="form-control" >
-        @foreach(App\http\Models\repairs::all() as $repair)
+        @foreach(\App\Http\Models\repairs::whereActive(true)->get() as $repair)
             <option value="{{$repair->id}}" >{{$repair->description.' '.$repair->cost}}</option>
         @endforeach
     </select>

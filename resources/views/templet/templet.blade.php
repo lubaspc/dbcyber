@@ -30,7 +30,5 @@
     <!--<script src="{{asset('js/app.js')}}"></script>-->
     @stack('js')
 </body>
-<footer class="bg-dark">
-    @yield('footer')
-</footer>
+
 </html>

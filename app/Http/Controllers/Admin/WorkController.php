@@ -23,9 +23,11 @@ class WorkController extends Controller
      */
     public function index()
     {
+        $repair = repairs::where('active',true)->get();
         $work = work::orderBy('status')->get();
         return view('admin.work.index',[
-            'works' => $work
+            'works' => $work,
+            'repairs' => $repair
         ]);
     }
 

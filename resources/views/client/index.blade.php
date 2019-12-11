@@ -11,7 +11,6 @@
                 </div>
                 <div class="card-body">
                     <form action="{{route('client_check')}}" method="post">
-
                         @csrf
                         <div class="form-group">
                             <label>Marca de tu equipo</label>
